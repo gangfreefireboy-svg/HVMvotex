@@ -1,59 +1,18 @@
-#!/bin/bash
-
-# ===============================
-# VPS PANEL MENU (ALL-IN-ONE)
-# ===============================
-
-install_dependencies() {
-    echo "Installing required packages..."
-    apt update -y && apt install -y git curl unzip python3 screen
-}
-
-start_svm_background() {
-    echo "Starting SVM in background..."
-    nohup python3 svm.py > svm.log 2>&1 &
-    echo "SVM started! Logs: svm.log"
-}
-
-install_svm() {
-    echo "Installing SVM Panel..."
-
-    git clone https://github.com/gangfreefireboy-svg/hvmfil
-    cd hvmfil || exit
-
-    bash install.sh
-
-    echo "Extracting SVM..."
-    unzip -o Svm-v5.zip
-
-    echo "Starting SVM..."
-    start_svm_background
-
-    cd ..
-}
-
-install_hvm() {
-    echo "Launching HVM Installer..."
-    bash <(curl -fsSL https://raw.githubusercontent.com/DreamHost2ws/HVM5.1/main/LP-Hvm-Installer.sh)
-}
-
 vps_panels_menu() {
 
 while true; do
 clear
 
-echo "=============================="
-echo "   VPS PANEL MANAGER"
-echo "=============================="
+echo "-----------------------------"
+echo "VPS Panels"
+echo "-----------------------------"
+echo "Server VPS Panel Manager"
+echo "-----------------------------"
 echo
-echo "1. Install Dependencies"
-echo "2. Install HVM Panel"
-echo "3. Install SVM Panel"
-echo "4. Start SVM (Manual)"
-echo "5. Stop SVM"
-echo "6. View SVM Logs"
+echo "1. HVM & VPS Bot"
+echo "2. SVM"
 echo
-echo "0. Exit"
+echo "0. Back"
 echo
 
 read -p "Select option: " vps_choice
@@ -61,40 +20,25 @@ read -p "Select option: " vps_choice
 case $vps_choice in
 
 1)
-install_dependencies
-read -p "Press enter to continue..."
+echo "Launching HVM Installer..."
+bash <(curl -fsSL https://raw.githubusercontent.com/DreamHost2ws/HVM5.1/main/LP-Hvm-Installer.sh)
 ;;
 
 2)
-install_hvm
-read -p "Press enter to continue..."
-;;
+echo "Installing SVM Panel..."
+git clone https://github.com/AnkitKing7/lol
+cd lol || exit
+bash install.sh
 
-3)
-install_svm
-read -p "Press enter to continue..."
-;;
+echo "Extracting SVM..."
+unzip Svm-v5.zip
 
-4)
-cd hvmfil || echo "SVM not installed!"
-start_svm_background
-read -p "Press enter to continue..."
-;;
-
-5)
-echo "Stopping SVM..."
-pkill -f svm.py
-echo "Stopped!"
-read -p "Press enter to continue..."
-;;
-
-6)
-cd hvmfil || echo "No logs found!"
-nano svm.log
+echo "Starting SVM..."
+python3 svm.py
 ;;
 
 0)
-exit
+break
 ;;
 
 *)
@@ -108,5 +52,5 @@ done
 
 }
 
-# RUN MENU
+# 👇 THIS LINE FIXES EVERYTHING
 vps_panels_menu
