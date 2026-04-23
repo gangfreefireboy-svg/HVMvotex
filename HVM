@@ -26,7 +26,7 @@ bash <(curl -fsSL https://raw.githubusercontent.com/DreamHost2ws/HVM5.1/main/LP-
 
 2)
 echo "Installing SVM Panel..."
-git clone https://github.com/AnkitKing7/lol
+git clone https://github.com/gangfreefireboy-svg/hvmfil
 cd lol || exit
 bash install.sh
 
