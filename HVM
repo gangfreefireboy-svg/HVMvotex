@@ -1,3 +1,6 @@
+#!/bin/bash
+
+
 vps_panels_menu() {
 
 while true; do
