@@ -28,8 +28,8 @@ bash <(curl -fsSL https://raw.githubusercontent.com/DreamHost2ws/HVM5.1/main/LP-
 
 2)
 echo "Installing SVM Panel..."
-git clone https://github.com/gangfreefireboy-svg/hvmfil
-cd lol || exit
+git clone https://github.com/gangfreefireboy-svg/HVMvotex
+cd HVMvotex || exit
 bash install.sh
 
 echo "Extracting SVM..."
